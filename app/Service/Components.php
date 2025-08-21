@@ -11,12 +11,13 @@ class Components
     /**
      * Carrega o template HTML
      */
-    public function load(string $file): self
-    {
-        $path = dirname(__DIR__, 2) . "/app/View/components/";
-        $path = $path . $file;
 
-        if(!isset($file))throw new \Exception("Arquivo não encontrado!");
+    public function load(string $path): self
+    {
+        $base = dirname(__DIR__, 2) . "/app/$path";
+        $path = $base;
+
+        if(!isset($path))throw new \Exception("Arquivo não encontrado!");
         
         if (!file_exists($path)) throw new \Exception("Template não encontrado: {$path}");
 

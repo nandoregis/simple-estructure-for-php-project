@@ -13,6 +13,8 @@ class AuthController extends Controller
 
     public function __construct() {
         parent::__construct();
+        parent::set_static_dir_view('Modules/Auth/View/');
+
     }
 
     public function index(Object $req)
@@ -24,7 +26,7 @@ class AuthController extends Controller
          
         } catch (\Exception $e) {
             
-            $msg = parent::components('message.php',
+            $msg = parent::components('View/Components/message.php',
             [
                 'status' => json_decode($e->getMessage())->status,
                 'message' => json_decode($e->getMessage())->message
@@ -33,7 +35,7 @@ class AuthController extends Controller
         }
 
         parent::html_render()
-        ->load('Auth/View/Login/index.php')
+        ->load('Login/index.php')
         ->set([
             'title' => 'Autenticação',
             'message' => $msg ?? "",

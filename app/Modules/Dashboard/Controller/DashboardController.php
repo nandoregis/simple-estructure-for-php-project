@@ -12,20 +12,22 @@ class DashboardController extends Controller
     public function __construct()
     {
        parent::__construct();
+        parent::set_static_dir_view('Modules/Dashboard/View/');
+
     }
 
     public function index() 
     {   
         
-        $li = parent::navegation((new Navigation)->user());
+        $li = parent::navegation_elements((new Navigation)->user());
         
         parent::html_render()
-        ->load('Dashboard/View/Home/index.php')
+        ->load('Home/index.php')
         ->set([
             'title' => 'Titulo dashboard',
-            'header' => parent::components('header.php'),
-            'menu' => parent::components('menu.php',['li' => $li]),
-            'texto' => 'Dashhoard'
+            'header' => parent::components('View/Components/header.php'),
+            'menu' => parent::components('View/Components/menu.php',['li' => $li]),
+            'texto' => 'Dashboard'
         ])
         ->display();
     }

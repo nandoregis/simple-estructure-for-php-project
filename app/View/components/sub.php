@@ -1,4 +1,4 @@
-<li class="menu--nav-primary {@default}">
+<li class="menu--nav-primary{@location}">
     <a class="{@class}" href="{@href}">{@title}</a>
     <div class="sub-menu__box">
         <ul>

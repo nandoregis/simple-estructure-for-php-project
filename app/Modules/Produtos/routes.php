@@ -15,7 +15,7 @@ use app\Modules\Produtos\Controller\ProdutoController;
            [
             "route" => "/{uuid}",
             "controller" => new ProdutoController,
-            "method" => "delete",
+            "method" => "produto",
             "http" => ["GET","POST"],
             "middlewares" => [new AuthMiddleware],
             "active" => true

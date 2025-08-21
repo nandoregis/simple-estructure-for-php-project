@@ -16,6 +16,13 @@ class Controller
         $this->components = new Components;
     }
 
+    protected function set_static_dir_view(string $dir)
+    {
+       if(!$dir) return;
+
+       $this->view = new View($dir);
+    }
+    
     protected function html_render()
     {
         return $this->view;
@@ -30,22 +37,23 @@ class Controller
         ->render();
     }
 
-    protected function navegation(Array $paths)
+    protected function navegation_elements(Array $paths)
     {   
 
         $nav = '';
 
         foreach ($paths as $key => $value) {
             
-            $nav .= $this->components('sub.php',[
+            $nav .= $this->components('View/Components/sub.php',[
                 'title' => $key,
                 'href' => "/$key",
                 'class' => 'sub-menu',
+                'location' => empty($value) ? '-location' : '',
                 'submenu' => (function () use ($value) {
                     $sub = '';
                     foreach ($value as $k => $val) 
                     {
-                        $sub .= $this->components('li.php', $val);
+                        $sub .= $this->components('View/Components/li.php', $val);
                     }
 
                     return $sub;

@@ -6,13 +6,15 @@
 
 <script>
     const menu = document.getElementById('menu');
-    const nav = document.querySelectorAll('.menu ul li');
+    const li = document.querySelectorAll('.menu--nav-primary');
+    const nav = document.querySelectorAll('.menu--nav-primary a.sub-menu');
+    
 
     nav.forEach(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
 
-            el.children[1].classList.toggle('show');
+            el.parentElement.children[1].classList.toggle('show');
         })
     });
 
